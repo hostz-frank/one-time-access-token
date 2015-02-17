@@ -1,0 +1,498 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0ne time Access Tokens v0.7\n"
+"Report-Msgid-Bugs-To: Frank Stürzebecher <frank@hostz.at>\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-02-17 12:15+0100\n"
+"Last-Translator: Frank Stuerzebecher <frank@hostz.at>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:18
+msgid "List campaigns"
+msgstr "Kampagnen auflisten"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:29
+msgid "Name of campaign"
+msgstr "Name der Kampagne"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:32
+msgid "For internal use only. The maximum length is 20 characters."
+msgstr "Wird nur intern genutzt. Die maximale Länge beträgt 20 Zeichen."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:37
+msgid "End of campaign on"
+msgstr "Kampagne endet am"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:40
+msgid "Date field. Please use this format: \"YYYY-MM-DD\""
+msgstr "Datum im Format: \"YYY-MM-DD\"."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:44
+msgid "Post ID"
+msgstr "Beitrags-ID"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:46
+msgid "You'll find the ID of the post or page, when you hover over the post's edit link with your mouse and look at the URL displayed by your browser."
+msgstr "Die ID eines Beitrags erscheint im Bearbeiten-Modus in der Adresszeile des Browsers, oder auch in einer Infozeile am Fuß des Browsers, wenn sich der Mauszeiger über dem \"Bearbeiten\"-Link für den Beitrag befindet."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:50
+msgid "Expiration redirect"
+msgstr "Weiterleitungsadresse nach Ablauf"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:53
+msgid "A root relative (beginning with a slash) or absolute URL. Redirection to this location happens, when the token has been used, then the allowed usage time frame has expired and when the campaign's end date has not been reached yet."
+msgstr "Der Pfad der Weiterleitungsadresse: entweder in der Form \"/pfad/zum/ziel\" (beginnend mit einem Schrägstrich!) oder als vollständige http/s-Adresse."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:57
+msgid "Sessions"
+msgstr "Sessions"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:59
+msgid "How many times cookie creation is allowed. Defaults to \"1\" (one-time access)."
+msgstr "Legt fest, wieviele Male eine Session erzeugt werden darf. Standard ist \"1\" (einmaliger Zugriff)."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:66
+msgid "When this timeframe ends then the cookie will be forced to expire. This is independent of the campaign's end."
+msgstr "Cookies werden ungültig gemacht, wenn das Ende des Session erreicht ist. Dies ist unabhängig vom festgelegten Ende der Kampagne."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:63
+msgid "Count of tokens to create"
+msgstr "Token-Anzahl"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:64
+msgid "Session duration"
+msgstr "Dauer einer Session"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:65
+msgid "<em>Note:</em> the token count has to match the count of data lines in your CSV export file, which should be: all lines minus 1 (for the expected header line)."
+msgstr "<em>Wichtig:</em> die Token-Anzahl muss mit der Anzahl der Datenzeilen in der Export-CSV-Datei übereinstimmen, d.h. alle Zeilen minus eins (\"minus eins\" für die erwartete Überschriften-Zeile)."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:71
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:71
+msgid "Save"
+msgstr "Speichern"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:120
+msgid "Add New Campaign"
+msgstr "Neue Kampagne erstellen"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:124
+msgid "Edit Campaign"
+msgstr "Kampagne bearbeiten"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:192
+msgid "The campaign could not be created due to an unexpected error."
+msgstr "Die Kampagne konnte aufgrund eines unerwarteten Fehlers nicht gespeichert werden."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:203
+#, php-format
+msgid "Campaign ID for \"%s\" could not be found in database."
+msgstr "Eine Kampagne \"%s\" wurde nicht gefunden."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:223
+msgid "Tokens could not be created due to an unexpected error."
+msgstr "Aufgrund eines unerwarteten Fehlers konnten keine Token erstellt werden."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:229
+#, php-format
+msgid "The campaign and it's %s token have been created."
+msgid_plural "The campaign and it's %s tokens have been created."
+msgstr[0] "Die Kampagne und %s zugehöriges Token wurden erstellt."
+msgstr[1] "Die Kampagne und ihre %s zugehörigen Token wurden erstellt."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:264
+msgid "The campaign has been saved successfully."
+msgstr "Die Kampagne wurde erfolgreich aktualisiert."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:267
+msgid "The campaign could not be saved due to an unexpected error."
+msgstr "Die Kampagne konnte aufgrund eines Fehlers nicht angelegt werden."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:301
+msgid "All fields are required!"
+msgstr "Bitte alle Felder ausfüllen!"
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:308
+msgid "Campaign's end date must be after today!"
+msgstr "Das Ende der Kampagne muss nach dem heutigen Datum festgesetzt werden."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:318
+msgid "There is a campaign using this name already, please choose another one."
+msgstr "Eine Kampagne mit diesem Titel exisiert bereits. Bitte einen anderen Titel wählen."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:324
+msgid "The allowed time frame to access a page must be at least 1 minute after using the tokenized URL."
+msgstr "Das erlaubte Zugriffszeitfenster muss mindestens eine Minute betragen."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:329
+msgid "The maximum token count you can create within one campaign is 99.999 tokens."
+msgstr "Die maximale Anzahl beträgt 99.999 Token pro Kampagne."
+
+#@ otat
+#: inc/otat-admin-tab-campaign.php:346
+msgid "You have to allow at least 1 session."
+msgstr "Mindestens eine Session muss erlaubt sein."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:15
+msgid "Add New"
+msgstr "Neue erstellen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:21
+msgid "No campaigns found."
+msgstr "Keine Kampagnen vorhanden."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:28
+msgid "Campaign title"
+msgstr "Titel der Kampagne"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:29
+msgid "Expires on"
+msgstr "Ende"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:30
+msgid "Token-protected Post"
+msgstr "Geschützter Beitrag"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:31
+msgid "Sessions / duration"
+msgstr "Session-Anzahl / Dauer"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:32
+msgid "Redirect after expired access"
+msgstr "Weiterleitung nach Ablauf des Zeitfensters"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:33
+msgid "Token count"
+msgstr "Anzahl der Token"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:34
+msgid "Created on/by"
+msgstr "Erstellt am"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:56
+#: inc/otat-admin-tab-campaigns.php:268
+msgid "Delete"
+msgstr "Löschen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:57
+#: inc/otat-admin-tab-campaigns.php:71
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:59
+msgid "Create test links"
+msgstr "Testlinks erzeugen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:61
+msgid "Campaign expired!"
+msgstr "Kampagne abgelaufen!"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:66
+#: inc/otat-admin-tab-campaigns.php:79
+msgid "Post ID not valid!"
+msgstr "Beitrags-ID ungültig!"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:68
+#: inc/otat-admin-tab-campaigns.php:70
+msgid "View"
+msgstr "Ansehen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:81
+#, php-format
+msgid "%s<br>by %s"
+msgstr "%s<br>von %s"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:94
+msgid "Testing tokenized links"
+msgstr "Links testen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:96
+msgid "No unused test links found."
+msgstr "Keine nutzbaren Testlinks vorhanden.<br />Zum Erzeugen kampagnen-spezifischer Testlinks bitte mit der Maus in der Liste oben über den Titel der Kampagne fahren und auf \"Testlinks erzeugen\" klicken."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:99
+msgid "Delete all test links (used and unused)."
+msgstr "Alle Test-Links löschen (benutzte und unbenutzte)"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:110
+msgid "Unused test links for campaign:"
+msgstr "Verwendbare Test-Links für Kampagne:"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:112
+msgid "You have to be <strong>logged out</strong> to make the following test links work:"
+msgstr "Die Test-Links funktionieren nur für <strong>abgemeldete</strong> Benutzer!"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:153
+msgid "An error occured while trying to create test tokens."
+msgstr "Während des Versuchs, Test-Token zu erzeugen, ist ein Fehler aufgetreten."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:155
+msgid "5 tokenized URLs have been created for testing (see <a href=\"#test-section\">below</a>)."
+msgstr "5 Test-Links wurden erzeugt (siehe <a href=\"#test-section\">unten</a>)."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:168
+msgid "An error occured while trying to delete all test tokens."
+msgstr "Während des Versuchs, alle Test-Links zu löschen, ist ein Fehler aufgetreten."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:219
+msgid "Your permissions do not allow to do that."
+msgstr "Die Benutzerrechte sind für diese Aktion unzureichend."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:259
+#, php-format
+msgid "Campaign \"%s\" and %d associated access tokens will be deleted!"
+msgstr "Die Kampagne \"%s\" und %d zugehörige Token werden unwiderruflich gelöscht!"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:259
+msgid "Are you sure?"
+msgstr "Soll dieser Befehl wirklich ausgeführt werden?"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:269
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:288
+msgid "An error happend while trying to delete tokens of this campaign."
+msgstr "Beim Löschen der Token für diese Kampagne ist ein Fehler aufgetreten."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:297
+msgid "Campaign successfully deleted"
+msgstr "Die Kampagne wurde erfolgreich gelöscht."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:299
+msgid "Campaign could not be deleted."
+msgstr "Die Kampagne konnte nicht gelöscht werden."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:13
+msgid "Append tokens of a campaign to a CSV file"
+msgstr "Token-Export in eine vorhandene CSV-Datei"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:34
+msgid "CSV file"
+msgstr "CSV-Datei"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:40
+msgid "Upload"
+msgstr "Hochladen"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:42
+msgid "Only CSV files can be uploaded."
+msgstr "Es können nur CSV-Dateien hochgeladen werden."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:49
+msgid "Uploaded CSV file"
+msgstr "Hochgeladene CSV-Datei"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:51
+#, php-format
+msgid "%s contains: <strong>%s</strong> data lines."
+msgstr "%s enthält: <strong>%s</strong> Datensätze (Zeilen minus Überschriftenzeile)."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:56
+msgid "Select campaign"
+msgstr "Kampagne auswählen"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:61
+msgid "Please select"
+msgstr "Bitte auswählen"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:78
+msgid "The count of campaign's tokens and file's data lines has to match."
+msgstr "Die Tokenanzahl der CSV-Datei und der Kampagne müssen gleich sein."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:83
+msgid "Save email addresses"
+msgstr "E-Mail-Adressen speichern"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:85
+msgid "Save email addresses from file locally."
+msgstr "E-Mail-Adressen aus der Datei lokal speichern."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:88
+msgid "Save email addresses from file into the local database and assign them to their corresponding token."
+msgstr "Speichert die E-Mail-Adressen aus der Datei in die lokale Datenbank und weist sie jeweils ihrem korrespondierenden Token zu."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:90
+msgid "Only useful for special use cases."
+msgstr "Nur sinnvoll in speziellen Anwendungsfällen (Bright-Kurse)."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:95
+msgid "Save Changes and Create Download."
+msgstr "Änderungen speichern und Download-Link erzeugen"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:118
+msgid "Old version of the file has expired. Please upload again."
+msgstr "Zeitablauf der hochgeladenen Datei. Bitte erneut hochladen."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:124
+msgid "Please select a campaign."
+msgstr "Bitte eine Kampagne auswählen."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:129
+msgid "This campaign seems not to be valid."
+msgstr "Diese Kampagne scheint ungültig  zu sein."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:239
+msgid "Error while trying to write to CSV file!"
+msgstr "Fehler beim Schreiben in die CSV-Datei!"
+
+#@ otat
+#: inc/otat-admin-tab-export.php:245
+#, php-format
+msgid "Appending tokens to uploaded CSV file was successful: <a href=\"%s\">Download CSV File</a>."
+msgstr "Die Erweiterung der hochgeladenen CSV-Datei mit den Token war erfolgreich: <a href=\"%s\">Herunterladen der CSV-Datei</a>."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:261
+msgid "These email addresses are already in the database and properly assigned to their tokens."
+msgstr "Diese E-Mail-Adressen wurden bereits in der Datenbank gespeichert."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:264
+#, php-format
+msgid "%d email addresses changed in CSV file and therefore have been updated in the database."
+msgstr "%d E-Mail-Adressen geändert in der CSV-Datei und wurden daher in der Datenbank auf den neuen Stand gebracht."
+
+#@ otat
+#: inc/otat-admin-tab-help.php:12
+#: inc/otat-admin.php:71
+msgid "Help"
+msgstr "Hilfe"
+
+#@ otat
+#: inc/otat-admin.php:69
+msgid "Campaigns"
+msgstr "Kampagnen"
+
+#@ otat
+#: inc/otat-admin.php:70
+msgid "Token Export"
+msgstr "Token-Export"
+
+#@ otat
+#. translators: plugin header field 'Name'
+#: one-time-access-tokens.php:0
+msgid "0ne time Access Tokens"
+msgstr "Token für einmaligen Zugriff"
+
+#@ otat
+#. translators: plugin header field 'Description'
+#: one-time-access-tokens.php:0
+msgid "Create (lots of) tokens to be supplied for a specific post. The moment you access the post (or page) the token was created for, it initiates a session cookie and becomes invalid instantly. Accessing the post again (without a valid cookie set) causes a configurable redirect."
+msgstr "Beitragsschutz ohne Passwort-Abfrageprozedur: ein individuelles, i.d.R. nur einmal verwendbares Zugriffstoken, angehängt an eine URL, emöglicht den Zugriff auf einen geschützten Beitrag. CSV-Export tausender Token zur Nutzung in Mailinglisten. Auch die Zuordnung eines Tokens zur E-Mail-Adresse ist möglich."
+
+#@ otat
+#: inc/otat-admin-tab-export.php:268
+msgid "It seems that somthing went wrong with writing the email addresses to the database. We recommend to delete the campaign, then to create a new one and try the email addresses import again."
+msgstr "Beim Schreiben der E-Mail-Adressen in die Datenbank scheint etwas schiefgelaufen zu sein. Am besten ist es wahrscheinlich, die Kampagne zu löschen, neu anzulegen und erst dann den Mailadressen-Import zu wiederholen."
+
+#@ otat
+#: inc/otat-admin-tab-campaigns.php:170
+msgid "All used and unused test tokens have been deleted successfully."
+msgstr "Sämtliche Test-Token (benutzte und unbenutzte) wurden erfolgreich gelöscht."
+
+#@ otat
+#: inc/otat-admin.php:48
+#: inc/otat-admin.php:49
+msgid "OT Access Tokens"
+msgstr "Einmal-Zugriffstoken"
+
+#@ otat
+#: inc/otat-admin.php:66
+msgid "One-Time Access Tokens for Premium Content"
+msgstr "Einmal-Zugriffstoken für geschützte Beiträge"
+
