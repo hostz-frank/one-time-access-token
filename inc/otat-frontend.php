@@ -91,13 +91,9 @@ function otat_auth_access () {
 	if ( isset( $_COOKIE['otat'] ) && isset( $_COOKIE['otat'][$post->ID] ) ) {
 		admin_debug( 'TOKEN COMES FROM COOKIE.<br>' );
 		$otat = sanitize_text_field( $_COOKIE['otat'][$post->ID] );
-		$access_count_check = '';
 	} elseif ( isset( $_GET['otat'] ) ) {
 		admin_debug( 'TOKEN COMES FROM URL.<br>' );
 		$otat = sanitize_text_field( $_GET['otat'] );
-
-		// Cookie not set: force check for allowed times to set an access cookie.
-		$access_count_check = ' AND c.otat_access_count > t.otat_counter';
 
 	} else {
 		admin_debug( 'NOT A TOKEN FOR THIS POST => DYING WITH MESSAGE: "Sorry: this link is not valid."<br>', true );
@@ -109,7 +105,7 @@ function otat_auth_access () {
 	$sql  = "SELECT * FROM `{$wpdb->prefix}otat_tokens` AS t ";
 	$sql .= "INNER JOIN `{$wpdb->prefix}otat_campaigns` AS c ";
 	$sql .= "ON t.campaign_id = c.ID ";
-	$sql  = $wpdb->prepare( $sql . "WHERE t.otat_token = '%s'$access_count_check;", $otat );
+	$sql  = $wpdb->prepare( $sql . "WHERE t.otat_token = '%s';", $otat );
 	$token_info = $wpdb->get_row( $sql );
 
 	if ( empty( $token_info ) ) {
@@ -117,6 +113,15 @@ function otat_auth_access () {
 		// Token not in database, maybe an old tokenized link of a meanwhile deleted campaign.
 		wp_die( __( 'Sorry: this link is not valid.', 'otat-front' ) );
 		exit;
+	} elseif ( isset( $token_info->otat_counter ) && isset( $token_info->otat_access_count ) ) {
+		// otat_counter belongs to the token and otat_access_count is the campaign's value.
+		if ( $token_info->otat_counter + 1 > $token_info->otat_access_count ) {
+			// Allowed times to create a cookie are used up.
+			$redirect_url = otat_build_sanitized_redirect_url( $token_info->otat_invalid_redirect_to );
+			admin_debug( 'ALLOWED TIMES TO CREATE A COOKIE ARE EATEN UP.<br>REDIRECT TO <a href="' . $redirect_url . '">' . $redirect_url . '</a>.<br>', true );
+			wp_redirect( $redirect_url );
+			exit;
+		};
 	} elseif ( isset( $token_info->post_id ) && ( (int)$token_info->post_id != $post->ID ) && is_otat_protected_post( $post->ID ) ) {
 		admin_debug( 'A TOKEN WAS FOUND IN DB WHILE IT DOES NOT BELONG TO THIS POST.<br>THIS POST IS ALSO TOKENIZED: REPLACING CONTENT WITH NON-AUTHORIZED MESSAGE.<br>RETURN<br>' );
 		// Token from Cookie has not been created for this post.
@@ -146,7 +151,8 @@ function otat_auth_access () {
 		// Cookie not set yet, token comes from GET.
 
 		// Set cookie, update db.
-		admin_debug( 'IT IS THE ' . $token_info->otat_counter + 1 . '. ACCESS.<br>' );
+		$this_count = $token_info->otat_counter + 1;
+		admin_debug( 'IT IS THE ' . $this_count . '. ACT OF CREATING A COOKIE.<br>' );
 		if ( $token_info->otat_valid_until_gmt > $now_gmt ) {
 			admin_debug( 'TOKEN NOT EXPIRED: SETTING COOKIE & UPDATING DB.<br>PROVIDE TOKEN INFO FOR OTHER PLUGINS AND LET THEM ACT.<br>RETURN.<br>' );
 			otat_set_cookie( $token_info, $post->ID );

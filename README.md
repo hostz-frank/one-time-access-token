@@ -9,3 +9,12 @@ has expired (usually one). In case of 1 allowed session this means, that sharing
 of tokenized URL's is useless. They create a cookie which keeps the door open
 for the initial URL opener, but for no one else.
 
+## Changelog
+
+## Version 0.9
+
+* Bug fix: Redirection issue with expired access tokens solved.
+
+## Version 0.8
+
+* Initial release
