@@ -115,7 +115,7 @@ function otat_auth_access () {
 		exit;
 	} elseif ( isset( $token_info->otat_counter ) && isset( $token_info->otat_access_count ) ) {
 		// otat_counter belongs to the token and otat_access_count is the campaign's value.
-		if ( $token_info->otat_counter + 1 > $token_info->otat_access_count ) {
+		if ( $token_info->otat_counter > $token_info->otat_access_count ) {
 			// Allowed times to create a cookie are used up.
 			$redirect_url = otat_build_sanitized_redirect_url( $token_info->otat_invalid_redirect_to );
 			admin_debug( 'ALLOWED TIMES TO CREATE A COOKIE ARE EATEN UP.<br>REDIRECT TO <a href="' . $redirect_url . '">' . $redirect_url . '</a>.<br>', true );
@@ -138,7 +138,7 @@ function otat_auth_access () {
 	if ( isset( $_COOKIE['otat'][$post->ID] ) ) {
 		if ( $not_expired ) {
 			$left = strtotime( $token_info->otat_accessed_gmt ) + $allowed_timeframe_sec - strtotime( $now_gmt );
-			admin_debug( 'COOKIE NOT EXPIRED, VALID UNTIL ' . date('d.m.Y H:i', time() + $allowed_timeframe_sec) . '<br>PROVIDE TOKEN INFO FOR OTHER PLUGINS AND LET THEM ACT.<br>RETURN.<br>' );
+			admin_debug( 'COOKIE NOT EXPIRED, VALID UNTIL ' . date('d.m.Y H:i', time() + $allowed_timeframe_sec) . ' GMT.<br>PROVIDE TOKEN INFO FOR OTHER PLUGINS AND LET THEM ACT.<br>RETURN.<br>' );
 			// Provide $token_info for other plugins to take action based on it.
 			// Do not change; action used already here: https://github.com/medizinmedien/medonline-bright-customizations/commit/e5ab7cace5364b3a8b697c68a20b4f2ff944afb7
 			do_action( 'otat_authenticated', $token_info );
