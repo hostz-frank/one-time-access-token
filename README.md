@@ -11,6 +11,15 @@ for the initial URL opener, but for no one else.
 
 ## Changelog
 
+## Version 0.92
+
+* Bugfix: Sanitize number ranges for sessions and "minutes until expiration" in 
+  setup and edit forms of campaigns.
+
+## version 0.91
+
+* Bugfix: otat_counter. Enhanced DEBUG output.
+
 ## Version 0.9
 
 * Bug fix: Redirection issue with expired access tokens solved.

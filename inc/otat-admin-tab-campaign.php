@@ -55,14 +55,14 @@ function otat_campaign_form() {
 				</tr>
 				<tr>
 					<th scope="row"><label for="otat_access_count"><?php _e( 'Sessions', 'otat' ); ?>:</label></th>
-					<td><input name="otat_access_count" type="number" id="otat_access_count" value="<?php echo ( $otat_access_count ) ? $otat_access_count : '1' ; ?>" aria-required="true">
+					<td><input name="otat_access_count" type="number" id="otat_access_count" min="0" max="9999" value="<?php echo ( $otat_access_count ) ? $otat_access_count : '1' ; ?>" aria-required="true">
 						<p class="description"><?php _e( 'How many times cookie creation is allowed. Defaults to "1" (one-time access).', 'otat' ); ?></p>
 					</td>
 				</tr>
 				<tr>
 				<tr>
 					<th scope="row"><label for="otat_allowed_access_time"><?php _e( 'Session duration', 'otat' ); ?>:</label></th>
-					<td><input name="otat_allowed_access_time" type="number" id="otat_allowed_access_time" value="<?php echo $otat_allowed_access_time; ?>" aria-required="true"> <strong>min</strong>
+					<td><input name="otat_allowed_access_time" type="number" id="otat_allowed_access_time"  min="1" max="999999" value="<?php echo $otat_allowed_access_time; ?>" aria-required="true"> <strong>min</strong>
 						<p class="description"><?php _e( 'When this timeframe ends then the cookie will be forced to expire. This is independent of the campaign\'s end.', 'otat' ); ?></p>
 					</td>
 				</tr>
