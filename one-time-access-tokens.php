@@ -7,7 +7,7 @@
  * Author URI: http://medonline.at
  * Text Domain: otat
  * Domain Path: /lang
- * Version: 0.92
+ * Version: 0.93
  */
 
 defined( 'ABSPATH' ) || die();

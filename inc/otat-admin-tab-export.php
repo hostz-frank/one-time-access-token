@@ -137,7 +137,7 @@ function otat_validate_tab_export_fields() {
 
 
 function otat_save_csv_upload_file() {
-	if ( ! function_exists( 'wp_handle_upload' ) ) 
+	if ( ! function_exists( 'wp_handle_upload' ) )
 		require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
 	$uploadedfile = $_FILES['csv-file'];
@@ -200,7 +200,7 @@ function otat_make_tmp_table( $form_data ) {
 		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}TMP_otat_tokens;" );
 		$tmp_table = $wpdb->query( "CREATE TABLE {$wpdb->prefix}TMP_otat_tokens LIKE {$wpdb->prefix}otat_tokens;" );
 		if ( false === $tmp_table ) {
-			//TODO: err_msg
+			error_log( 'inc/otat-admin-tab-export.php: line 202 - table wp(prefix)_TMP_otat_tokens could NOT be created!' );
 			return false;
 		}
 	}
@@ -218,18 +218,31 @@ function otat_make_tmp_table( $form_data ) {
 	$sql  = "INSERT INTO `{$wpdb->prefix}TMP_otat_tokens`";
 	$sql .= " (`ID`, `campaign_id`, `otat_email`, `otat_token`, `otat_accessed_gmt`)\nVALUES";
 	$csv_lines[0] .= ',OneTimeAccessToken';
+	$problematic_mails = '';
 	for( $i = 1; $i < count( $csv_lines ); ++$i ) {
 		$csv_lines[$i] .= ",{$token_list[$i - 1]->otat_token}";
 		if ( $form_data['otat_assign_email'] ) {
 			$fields = explode( ',', $csv_lines[$i] );
 			// Again, we do not use $wpdb->prepare() - for performance reasons.
-			$email = esc_sql( $fields[0] );
+			$email = utf8_encode ( esc_sql( $fields[0] ) );
+			if( ! is_email( $email ) ) {
+				$problematic_mails .= $email . ', ';
+			}
 			$sql .= " ( NULL, {$form_data['otat_campaign_id']}, '$email', '{$token_list[$i - 1]->otat_token}', '0000-00-00 00:00:00' ),";
 		}
+	}
+	if( $problematic_mails ) {
+		print '<div class="error"><p>' . __( 'WARNING! WordPress function is_email() returns FALSE for: ', 'otat' )
+			. trim( trim( $problematic_mails ), ',' ) . '</p></div>';
 	}
 	if ( $form_data['otat_assign_email'] ) {
 		$sql = trim( $sql, ',') . ';';
 		$affected_token_rows = $wpdb->query( $sql );
+		if( false === $affected_token_rows ) {
+			error_log( 'inc/otat-admin-tab-export.php: db-ERROR as result of trying to fill TMP_otat_tokens!' );
+		} else if( 0 === $affected_token_rows ) {
+			error_log( 'inc/otat-admin-tab-export.php: 0 affected rows as result of trying to fill TMP_otat_tokens!' );
+		}
 	}
 
 	// Write extended file to file system and provide a download link.
@@ -241,7 +254,7 @@ function otat_make_tmp_table( $form_data ) {
 		$otat_settings = get_option( 'otat' );
 		$dir = $otat_settings['upload_dir'];
 		$filename = $dir['url'] . '/' . basename( $extended_csv_filename );
-		print '<div class="updated"><p>' . sprintf( 
+		print '<div class="updated"><p>' . sprintf(
 			__( 'Appending tokens to uploaded CSV file was successful: <a href="%s">Download CSV File</a>.', 'otat' ),
 			$filename
 		) . '</p></div>';
@@ -257,7 +270,7 @@ function otat_make_tmp_table( $form_data ) {
 		$updated_rows = $wpdb->query( $sql ); // ca. 5 sec bei 26.600 Records
 		if ( $updated_rows == $affected_token_rows ) {
 			$wpdb->query( "DROP TABLE `{$wpdb->prefix}TMP_otat_tokens`;" );
-		}	elseif ( 0 === $updated_rows ) {
+		} else if ( 0 === $updated_rows ) {
 			print '<div class="updated"><p>' . __( 'These email addresses are already in the database and properly assigned to their tokens.', 'otat' ) . '</p></div>';
 		} else if ( $updated_rows > 0 ) {
 			print '<div class="updated"><p>' . sprintf(
