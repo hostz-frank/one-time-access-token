@@ -147,7 +147,7 @@ function otat_save_csv_upload_file() {
 	if ( count( $movefile ) > 1 ) { // In case of errors only the key 'error' will be returned.
 		$csv_lines = count( file( $movefile['file'] ) ) - 1 ; // Minus first line which contains field names.
 		$csv_file = array( 'name' => $movefile['file'], 'numrows' => $csv_lines );
-		set_transient( 'otat_uploaded_csv_file', $csv_file, 300 );
+		set_transient( 'otat_uploaded_csv_file', $csv_file, 60 );
 		return true;
 	} else {
 		print '<div class="error"><p>' . esc_html( $movefile['error'] ) . '</p></div>';
@@ -233,7 +233,8 @@ function otat_make_tmp_table( $form_data ) {
 	}
 	if( $problematic_mails ) {
 		print '<div class="error"><p>' . __( 'WARNING! WordPress function is_email() returns FALSE for: ', 'otat' )
-			. trim( trim( $problematic_mails ), ',' ) . '</p></div>';
+			. trim( trim( $problematic_mails ), ',' ) . '</p><p><strong>' . __( 'Mail-Import DENIED!! Please fix malformed mail addresses! Then try again.') . '</strong></p></div>';
+			return;
 	}
 	if ( $form_data['otat_assign_email'] ) {
 		$sql = trim( $sql, ',') . ';';

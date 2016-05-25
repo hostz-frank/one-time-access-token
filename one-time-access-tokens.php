@@ -7,14 +7,13 @@
  * Author URI: http://medonline.at
  * Text Domain: otat
  * Domain Path: /lang
- * Version: 0.93
+ * Version: 0.94
  */
 
 defined( 'ABSPATH' ) || die();
 
 define( 'OTAT_DIR', plugin_dir_path( __FILE__ ) );
-define( 'OTAT_VERSION', '0.7' );
-
+define( 'OTAT_VERSION', '0.94' );
 
 add_action( 'init', 'otat_init' );
 register_activation_hook( __FILE__, 'otat_load_activation' );

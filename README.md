@@ -11,6 +11,14 @@ for the initial URL opener, but for no one else.
 
 ## Changelog
 
+## Version 0.94
+
+* Fix: deny import of malformed mail addresses into db.
+
+## Version 0.93
+
+* Bugfix: make sure mail addresses are written to db utf-8-encoded.
+
 ## Version 0.92
 
 * Bugfix: Sanitize number ranges for sessions and "minutes until expiration" in 
